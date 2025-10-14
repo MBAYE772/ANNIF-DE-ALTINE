@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Joyeux Anniversaire 🎉</title>
+  <style>
+    :root{
+      --bg1:#0f172a; /* deep navy */
+      --bg2:#0b1220;
+      --accent1:#ff6b6b;
+      --accent2:#ffd166;
+      --accent3:#6be4ff;
+      --glass: rgba(255,255,255,0.06);
+      --glow: 0 10px 30px rgba(99,102,241,0.12);
+      font-family: 'Segoe UI', Roboto, -apple-system, system-ui, 'Helvetica Neue', Arial;
+    }
+
+    /* page */
+    html,body{height:100%;margin:0}
+    body{
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(107,228,255,0.06), transparent),
+                  radial-gradient(1000px 500px at 90% 80%, rgba(255,177,101,0.03), transparent),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      display:flex;align-items:center;justify-content:center;padding:32px;color:whitesmoke;
+    }
+
+    .card{
+      width:100%;max-width:920px;border-radius:20px;padding:28px;position:relative;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      box-shadow: var(--glow), 0 6px 20px rgba(2,6,23,0.6);overflow:hidden;
+      backdrop-filter: blur(6px);
+    }
+
+    /* rotating ornamental SVG behind */
+    .ornament{
+      position:absolute;inset:auto -10% -10% auto;width:760px;height:760px;pointer-events:none;opacity:0.12;
+      transform-origin:center center;animation:spin 30s linear infinite;
+    }
+    @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+    .top-row{display:flex;gap:24px;align-items:center}
+
+    /* photo */
+    .photo-wrap{flex:0 0 200px;position:relative}
+    .photo{
+      width:200px;height:200px;border-radius:50%;overflow:hidden;border:6px solid rgba(255,255,255,0.06);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 0 6px rgba(255,255,255,0.02) inset;position:relative;
+      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.15));
+    }
+
+    .photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* animated ring */
+    .ring{
+      position:absolute;left:-18px;top:-18px;width:236px;height:236px;border-radius:50%;
+      background: conic-gradient(from 120deg, rgba(255,107,107,0.12), rgba(255,209,102,0.12), rgba(107,228,255,0.12));
+      filter:blur(18px);opacity:0.95;animation:float 6s ease-in-out infinite;
+    }
+    @keyframes float{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(6deg)}100%{transform:translateY(0) rotate(0)}}
+
+    /* message */
+    .message{flex:1}
+    .title{
+      font-size:clamp(28px,4vw,44px);margin:0 0 8px 0;letter-spacing:0.6px;display:flex;align-items:center;gap:12px
+    }
+    .sparkle{display:inline-block;padding:8px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:#0b1220;font-weight:800;font-size:18px;box-shadow:0 8px 30px rgba(255,177,101,0.12);transform:translateY(0);animation:pop 1.6s ease-in-out infinite}
+    @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.06)}60%{transform:scale(0.98)}100%{transform:scale(1)}}
+
+    .subtitle{margin:4px 0 14px 0;font-size:16px;color:rgba(255,255,255,0.85)}
+
+    .big-wish{
+      font-size:clamp(22px,3.4vw,34px);margin:10px 0 18px 0;background:linear-gradient(90deg,var(--accent3),#b58bff,var(--accent2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;letter-spacing:0.2px;text-shadow:0 6px 30px rgba(0,0,0,0.5);
+      animation:glimmer 3s ease-in-out infinite
+    }
+    @keyframes glimmer{0%{filter:brightness(1)}50%{filter:brightness(1.18)}100%{filter:brightness(1)}}
+
+    /* confetti */
+    .confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .confetti i{position:absolute;display:block;width:10px;height:18px;opacity:0.95;transform-origin:center;animation:conf 6s linear infinite}
+    .confetti i:nth-child(odd){width:6px;height:12px}
+    .confetti i:nth-child(1){left:6%;animation-delay:0s;background:var(--accent1)}
+    .confetti i:nth-child(2){left:18%;animation-delay:0.8s;background:var(--accent2)}
+    .confetti i:nth-child(3){left:24%;animation-delay:1.2s;background:var(--accent3)}
+    .confetti i:nth-child(4){left:33%;animation-delay:0.4s;background:#8be97a}
+    .confetti i:nth-child(5){left:42%;animation-delay:1.6s;background:#ffb3ff}
+    .confetti i:nth-child(6){left:55%;animation-delay:0.2s;background:#ffd166}
+    .confetti i:nth-child(7){left:66%;animation-delay:0.9s;background:#6be4ff}
+    .confetti i:nth-child(8){left:75%;animation-delay:1.4s;background:#ff6b6b}
+    .confetti i:nth-child(9){left:85%;animation-delay:2s;background:#a78bfa}
+
+    @keyframes conf{0%{transform:translateY(-20vh) rotate(0) translateX(0);opacity:0}10%{opacity:1}
+      100%{transform:translateY(120vh) rotate(720deg) translateX(30px);opacity:0}}
+
+    /* floating balloons */
+    .balloons{position:absolute;right:22px;top:10px;display:flex;flex-direction:column;gap:14px}
+    .balloon{width:62px;height:84px;border-radius:50% 50% 45% 45%;position:relative;display:block;transform-origin:center bottom;animation:balloon 5s ease-in-out infinite}
+    .balloon::after{content:'';position:absolute;bottom:-24px;left:50%;width:2px;height:28px;background:linear-gradient(180deg,rgba(255,255,255,0.25),rgba(0,0,0,0.25));transform:translateX(-50%)}
+    .b1{background:linear-gradient(180deg,#ff7b7b,#ff4b8b);animation-delay:0s}
+    .b2{background:linear-gradient(180deg,#ffd166,#ffb84a);animation-delay:0.9s}
+    .b3{background:linear-gradient(180deg,#6be4ff,#1aa3ff);animation-delay:1.7s}
+    @keyframes balloon{0%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}100%{transform:translateY(0) rotate(-3deg)}}
+
+    /* CTA */
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,#222934, #2a3140);border:1px solid rgba(255,255,255,0.04);color:whitesmoke;text-decoration:none;font-weight:700;box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+    .btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#071427}
+
+    /* small footer */
+    footer{margin-top:18px;font-size:13px;color:rgba(255,255,255,0.6)}
+
+    /* responsive */
+    @media (max-width:640px){
+      .top-row{flex-direction:column;align-items:center;text-align:center}
+      .photo-wrap{order:0}
+      .message{width:100%}
+      .balloons{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="article" aria-label="Carte d'anniversaire">
+
+    <!-- decorative SVG ornament (rotating) -->
+    <svg class="ornament" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1">
+          <stop offset="0" stop-color="#ff6b6b" stop-opacity="0.35"/>
+          <stop offset="0.5" stop-color="#b58bff" stop-opacity="0.28"/>
+          <stop offset="1" stop-color="#6be4ff" stop-opacity="0.25"/>
+        </linearGradient>
+      </defs>
+      <g transform="translate(400,400)">
+        <circle r="320" fill="url(#g1)" />
+        <g opacity="0.3">
+          <path d="M-300 0 C -200 -200, 200 -200, 300 0 C 200 200, -200 200, -300 0 Z" fill="#fff"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="confetti" aria-hidden="true">
+      <!-- simple confetti pieces (duplicates provide the effect) -->
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+    <div class="balloons" aria-hidden="true">
+      <span class="balloon b1"></span>
+      <span class="balloon b2"></span>
+      <span class="balloon b3"></span>
+    </div>
+
+    <div class="top-row">
+      <div class="photo-wrap">
+        <div class="ring" aria-hidden="true"></div>
+        <figure class="photo" title="Photo d'anniversaire">
+          <!-- Remplacez 'photo.jpg' par le chemin vers votre photo -->
+          <img src="photo.jpg" alt="Votre photo" />
+        </figure>
+      </div>
+
+      <div class="message">
+        <h1 class="title"><span class="sparkle">Joyeux anniversaire !</span></h1>
+        <div class="subtitle">Que cette journée t'apporte joie, réussite et plein de sourires.</div>
+
+        <div class="big-wish">Que tous tes rêves brillent aujourd'hui ✨</div>
+
+        <div class="actions">
+          <a class="btn primary" href="#" onclick="document.getElementById('play').play();return false;">Faire jouer un son</a>
+          <a class="btn" href="#" onclick="toggleConfetti();return false;">Relancer les confettis</a>
+        </div>
+
+        <footer>Personnalise le message et remplace <code>photo.jpg</code> par ta photo.</footer>
+      </div>
+    </div>
+
+    <!-- hidden audio to play when user clicks -->
+    <audio id="play" src="" preload="auto"></audio>
+
+  </div>
+
+  <script>
+    // small JS pour relancer/confetti + charger son si présent
+    function toggleConfetti(){
+      const conf = document.querySelector('.confetti');
+      conf.style.display = 'none';
+      // forcer reflow pour relancer les animations
+      void conf.offsetWidth;
+      conf.style.display = '';
+    }
+
+    // If the user wants to play a short melody, they can set the audio src to a file named "birthday.mp3" in same folder.
+    (function(){
+      const a = document.getElementById('play');
+      // try to auto-assign common filename if available locally (user can add file)
+      a.src = 'birthday.mp3';
+    })();
+  </script>
+</body>
+</html>
