@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Joyeux Anniversaire Altine 🎉</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap');
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #4b0082, #800080, #ff69b4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+/* Carte principale */
+.card {
+  position: relative;
+  text-align: center;
+  padding: 50px 30px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(255,255,255,0.3);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Photo */
+.card img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 0 25px #ff69b4;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 25px #ff69b4; }
+  50% { box-shadow: 0 0 45px #fff; }
+}
+
+/* Titre */
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3em;
+  margin: 20px 0 5px;
+  color: #fff;
+  text-shadow: 0 0 10px #fff, 0 0 20px #ff1493;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4; }
+  to { text-shadow: 0 0 20px #fff, 0 0 40px #ff1493; }
+}
+
+/* Date */
+.date {
+  font-size: 1.2em;
+  color: #ffe4e1;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+/* Message */
+.message {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #fffaf0;
+  margin-top: 15px;
+  animation: fadeIn 4s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Signature */
+.signature {
+  margin-top: 25px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8em;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+}
+
+/* Confettis */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  top: 0;
+  opacity: 0.8;
+  border-radius: 50%;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* Bouton */
+button {
+  background: #ff1493;
+  border: none;
+  color: white;
+  font-size: 1em;
+  padding: 10px 20px;
+  margin-top: 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: #ff69b4;
+  transform: scale(1.1);
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <!-- Photo -->
+  <img src="http://127.0.0.1:5500/ALTINE.png" alt="Photo d'anniversaire" />
+
+  <!-- Titre -->
+  <h1>Joyeux Anniversaire à Moi 🎂</h1>
+  <div class="date">✨ 16 Octobre ✨</div>
+
+  <!-- Message principal -->
+  <div class="message">
+    En ce jour spécial du <strong>16 octobre</strong>,<br>
+    je célèbre ma vie, mes efforts et tout le chemin parcouru.<br><br>
+    Je me souhaite une année pleine de bonheur, de paix et de réussite.<br>
+    Que chaque jour m’apporte de nouvelles raisons de sourire et d’avancer avec confiance.<br><br>
+    <strong>Un immense merci à ma mere  💖</strong>,<br>
+    pour son amour, son soutien et sa présence de chaque instant.<br>
+    Elle a été, et restera toujours, une lumière dans ma réussite et dans ma vie.<br><br>
+    Aujourd’hui, je célèbre non seulement ma naissance,<br>
+    mais aussi l’amour et la force qui m’accompagnent chaque jour. 💕
+  </div>
+
+  <!-- Signature -->
+  <div class="signature">— Altine 🌟</div>
+
+  <!-- Bouton confettis -->
+  <button onclick="launchConfetti()">Célébrer 🎉</button>
+</div>
+
+<script>
+function launchConfetti() {
+  for (let i = 0; i < 30; i++) {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 5000);
+  }
+}
+</script>
+
+</body>
+</html>
